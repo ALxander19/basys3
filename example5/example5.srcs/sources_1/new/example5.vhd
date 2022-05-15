@@ -29,7 +29,6 @@ entity example5 is
            reset      : in  std_logic;
            button_in  : in  std_logic;
            led0       : out  std_logic);
-           --button_out : out std_logic);
 end example5;
 
 architecture Behavioral of example5 is
@@ -50,6 +49,8 @@ begin
             if (reset = '1') then
                 flipflop_1 <= '0';
                 flipflop_2 <= '0';
+                tmp <= 0;
+                led0 <= '0';
             else
                 flipflop_1 <= button_in;
                 flipflop_2 <= flipflop_1;
@@ -68,6 +69,8 @@ begin
             if (reset = '1') then
                 count := 0;
                 flipflop_3 <= '0';
+                tmp <= 0;
+                led0 <= '0';
             else
                 if (count_start = '1') then
                     count := 0;
@@ -86,6 +89,8 @@ begin
         if rising_edge(clk) then
             if (reset = '1') then
                 flipflop_4 <= '0';
+                tmp <= 0;
+                led0 <= '0';
             else
                 flipflop_4 <= flipflop_3;
             end if;
